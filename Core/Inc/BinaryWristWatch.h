@@ -5,9 +5,15 @@
  extern "C" {
 #endif
 
+#define LED_BLINK_DELAY 1
+
+
+
 void set_LED(uint32_t, uint32_t); //set LEDs (Anode,Cathode)
 void reset_LED(void); //all leds off (sets all GPIO ports as inputs)
 void blink_LED(uint32_t, uint32_t, uint32_t); //blink led (anode,cathode,delay)
+
+void set_lower_seconds(uint8_t); //sets lower part of seconds (0 to 9)
 
 #ifdef __cplusplus
 }

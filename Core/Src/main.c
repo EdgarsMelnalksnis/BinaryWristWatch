@@ -35,7 +35,6 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-#define LED_BLINK_DELAY 10
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,7 +45,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint8_t i=0;//for LED test purposes
+uint32_t dumb_delay=0;//for test purposes
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -107,28 +107,43 @@ int main(void) {
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_8, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_9, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_10, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_9, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_10, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_10, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+		dumb_delay++;
+		if(dumb_delay>5000)//replace with systick
+		 {
+			dumb_delay=0;
 
+		i++;
+		if(i>9){
+			i=0;
+		}
+
+		}
+		set_lower_seconds(i);
+
+
+	/*
+		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_8, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_9, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_10, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_11, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_12, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_9, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_10, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_11, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_12, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_10, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_11, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_12, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_11, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_12, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+		 blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+		 */
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
