@@ -45,18 +45,18 @@ void blink_LED(uint32_t Anode, uint32_t Cathode, uint32_t delay)//blink led (ano
 }
 void set_lower_seconds(uint8_t lower_seconds)//sets lower part of seconds (0 to 9)
 {
-cycle_counter++;
-	if (lower_seconds == 1 && cycle_counter % 3 == 0) {
+//cycle_counter++;
+
+	if (lower_seconds == 1) {
 		set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
-	} else if (lower_seconds == 2 && cycle_counter % 3 == 0 ) {
+	} else if (lower_seconds == 2) {
 		set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
 	} else if (lower_seconds == 3) {
-		if(cycle_counter%2==0){
+
 		set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
-		}
-		else{
+
 		set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
-		}
+
 	} else if (lower_seconds == 4) {
 		set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
 	} else if (lower_seconds == 5) {
@@ -77,31 +77,54 @@ cycle_counter++;
 	}
 
 	/*
-	 if (lower_seconds == 1) {
-
-	 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);//adjust brightnes by delay/2
-	 } else if (lower_seconds == 2) {
-	 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8, LED_BLINK_DELAY);
+	 if (lower_seconds == 1 && cycle_counter % 3 == 0) {
+	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
+	 } else if (lower_seconds == 2 && cycle_counter % 3 == 0 ) {
+	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
 	 } else if (lower_seconds == 3) {
-	 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-	 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8, LED_BLINK_DELAY);
+	 if(cycle_counter%2==0){
+	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
+	 }
+	 else{
+	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
+	 }
 	 } else if (lower_seconds == 4) {
-	 blink_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
 	 } else if (lower_seconds == 5) {
-	 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-	 blink_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
+	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
 	 } else if (lower_seconds == 6) {
-	 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8, LED_BLINK_DELAY);
-	 blink_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
+	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
 	 } else if (lower_seconds == 7) {
-	 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-	 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8, LED_BLINK_DELAY);
-	 blink_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
+	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
+	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
 	 } else if (lower_seconds == 8) {
-	 blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+	 set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7);
 	 } else if (lower_seconds == 9) {
-	 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-	 blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7, LED_BLINK_DELAY);
+	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
+	 set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7);
 	 }
 	 */
+
+}
+void set_upper_seconds(uint8_t lower_seconds)//sets lower part of seconds (0 to 9)
+{
+//cycle_counter++;
+
+	if (lower_seconds == 1) {
+		set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12);
+	} else if (lower_seconds == 2) {
+		set_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_7);
+	} else if (lower_seconds == 3) {
+		set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12);
+		set_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_7);
+	} else if (lower_seconds == 4) {
+		set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_7);
+	} else if (lower_seconds == 5) {
+		set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12);
+		set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_7);
+	}
+
 }

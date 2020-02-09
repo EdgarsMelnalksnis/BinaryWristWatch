@@ -45,8 +45,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t i=0;//for LED test purposes
-uint32_t dumb_delay=0;//for test purposes
+uint8_t i = 0, j = 0; //for LED test purposes
+uint32_t dumb_delay = 0; //for test purposes
+extern uint32_t ms_counter;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -55,7 +56,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_ADC_Init(void);
 static void MX_RTC_Init(void);
-
+//__STATIC_INLINE void LL_SYSTICK_SetClkSource(uint32_t);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -102,48 +103,31 @@ int main(void) {
 	MX_RTC_Init();
 	/* USER CODE BEGIN 2 */
 
+
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		dumb_delay++;
-		if(dumb_delay>5000)//replace with systick
-		 {
-			dumb_delay=0;
 
-		i++;
-		if(i>9){
-			i=0;
-		}
+		if (ms_counter > 1000) //replace with systick
+				{
+			ms_counter=0;
+
+
+			i++;
+			if (i > 9) {
+				i = 0;
+				j++;
+				if (j > 5) {
+					j = 0;
+				}
+			}
 
 		}
 		set_lower_seconds(i);
+		set_upper_seconds(j);
 
-
-	/*
-		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_8, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_9, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_10, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_7, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_9, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_10, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_10, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_11, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		 blink_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7, LED_BLINK_DELAY);
-		 */
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
@@ -195,6 +179,11 @@ void SystemClock_Config(void) {
 
 	LL_SYSTICK_SetClkSource(LL_SYSTICK_CLKSOURCE_HCLK);
 	LL_SetSystemCoreClock(2097000);
+
+	/* SysTick_IRQn interrupt configuration */
+
+	NVIC_SetPriority(SysTick_IRQn, 0);
+	LL_SYSTICK_EnableIT();
 }
 
 /**
@@ -426,6 +415,9 @@ static void MX_GPIO_Init(void) {
 	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
+
+
+
 
 /* USER CODE BEGIN 4 */
 
