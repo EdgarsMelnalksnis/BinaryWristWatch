@@ -21,7 +21,7 @@
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H
-#define __MAIN_H
+#define __MAIN_Hc separete code in h files
 
 #ifdef __cplusplus
 extern "C" {
