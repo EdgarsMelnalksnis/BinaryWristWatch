@@ -13,8 +13,8 @@ void set_LED(uint32_t, uint32_t); //set LEDs (Anode,Cathode)
 void reset_LED(void); //all leds off (sets all GPIO ports as inputs)
 void blink_LED(uint32_t, uint32_t, uint32_t); //blink led (anode,cathode,delay)
 
-void set_lower_seconds(uint8_t); //sets lower part of seconds (0 to 9)
-void set_upper_seconds(uint8_t); //sets upper part of seconds (0 to 5)
+void set_lower_seconds(uint8_t);
+void set_upper_seconds(uint8_t);
 #ifdef __cplusplus
 }
 #endif

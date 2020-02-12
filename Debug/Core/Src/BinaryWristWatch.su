@@ -1,0 +1,7 @@
+stm32l0xx_ll_gpio.h:843:22:LL_GPIO_SetOutputPin	16	static
+stm32l0xx_ll_gpio.h:872:22:LL_GPIO_ResetOutputPin	16	static
+BinaryWristWatch.c:6:6:set_LED	48	static
+BinaryWristWatch.c:29:6:reset_LED	32	static
+BinaryWristWatch.c:40:6:blink_LED	24	static
+BinaryWristWatch.c:46:6:set_lower_seconds	16	static
+BinaryWristWatch.c:80:6:set_upper_seconds	16	static

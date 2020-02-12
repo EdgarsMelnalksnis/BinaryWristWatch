@@ -76,53 +76,20 @@ void set_lower_seconds(uint8_t lower_seconds)//sets lower part of seconds (0 to 
 		set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7);
 	}
 
-	/*
-	 if (lower_seconds == 1 && cycle_counter % 3 == 0) {
-	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
-	 } else if (lower_seconds == 2 && cycle_counter % 3 == 0 ) {
-	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
-	 } else if (lower_seconds == 3) {
-	 if(cycle_counter%2==0){
-	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
-	 }
-	 else{
-	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
-	 }
-	 } else if (lower_seconds == 4) {
-	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
-	 } else if (lower_seconds == 5) {
-	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
-	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
-	 } else if (lower_seconds == 6) {
-	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
-	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
-	 } else if (lower_seconds == 7) {
-	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
-	 set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_8);
-	 set_LED(LL_GPIO_PIN_12, LL_GPIO_PIN_7);
-	 } else if (lower_seconds == 8) {
-	 set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7);
-	 } else if (lower_seconds == 9) {
-	 set_LED(LL_GPIO_PIN_10, LL_GPIO_PIN_7);
-	 set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_7);
-	 }
-	 */
-
 }
-void set_upper_seconds(uint8_t lower_seconds)//sets lower part of seconds (0 to 9)
+void set_upper_seconds(uint8_t upper_seconds)//sets lower part of seconds (0 to 9)
 {
-//cycle_counter++;
 
-	if (lower_seconds == 1) {
+	if (upper_seconds == 1) {
 		set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12);
-	} else if (lower_seconds == 2) {
+	} else if (upper_seconds == 2) {
 		set_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_7);
-	} else if (lower_seconds == 3) {
+	} else if (upper_seconds == 3) {
 		set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12);
 		set_LED(LL_GPIO_PIN_8, LL_GPIO_PIN_7);
-	} else if (lower_seconds == 4) {
+	} else if (upper_seconds == 4) {
 		set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_7);
-	} else if (lower_seconds == 5) {
+	} else if (upper_seconds == 5) {
 		set_LED(LL_GPIO_PIN_11, LL_GPIO_PIN_12);
 		set_LED(LL_GPIO_PIN_9, LL_GPIO_PIN_7);
 	}
